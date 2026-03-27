@@ -28,6 +28,207 @@ body {
   font-family: "Manrope", sans-serif;
 }
 
+body.intro-active {
+  overflow: hidden;
+}
+
+body.intro-active .site-shell {
+  opacity: 0;
+  transform: translateY(24px) scale(0.985);
+}
+
+.site-shell {
+  transition:
+    opacity 700ms ease,
+    transform 700ms ease;
+}
+
+.intro-screen {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at top, rgba(241, 182, 27, 0.14), transparent 28%),
+    linear-gradient(180deg, rgba(6, 14, 28, 0.98), rgba(8, 18, 34, 1));
+  transition:
+    opacity 700ms ease,
+    visibility 700ms ease;
+}
+
+.intro-screen.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.intro-glow {
+  position: absolute;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(241, 182, 27, 0.22), transparent 65%);
+  filter: blur(12px);
+  animation: introPulse 1.8s ease-in-out infinite;
+}
+
+.intro-ring {
+  position: absolute;
+  width: 520px;
+  height: 520px;
+  border-radius: 50%;
+  border: 1px solid rgba(241, 182, 27, 0.18);
+  box-shadow: inset 0 0 60px rgba(241, 182, 27, 0.06);
+  animation: introRing 2.2s ease-in-out infinite;
+}
+
+.intro-lines {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.intro-lines span {
+  position: absolute;
+  left: -20%;
+  width: 40%;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(255, 222, 122, 0.65), transparent);
+  opacity: 0;
+}
+
+.intro-lines span:nth-child(1) {
+  top: 28%;
+  animation: introSweep 1.7s ease-in-out infinite;
+}
+
+.intro-lines span:nth-child(2) {
+  top: 50%;
+  animation: introSweep 1.7s ease-in-out 0.25s infinite;
+}
+
+.intro-lines span:nth-child(3) {
+  top: 72%;
+  animation: introSweep 1.7s ease-in-out 0.5s infinite;
+}
+
+.intro-content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  animation: introRise 1s ease both;
+}
+
+.intro-logo {
+  width: 150px;
+  height: 150px;
+  object-fit: contain;
+  filter: drop-shadow(0 16px 28px rgba(0, 0, 0, 0.36));
+  animation: introSpinIn 1.2s ease both;
+}
+
+.intro-kicker,
+.intro-season {
+  margin: 0;
+  color: var(--muted);
+  font-family: "Bebas Neue", sans-serif;
+  letter-spacing: 0.18em;
+}
+
+.intro-kicker {
+  margin-top: 20px;
+  font-size: 1rem;
+  color: var(--gold);
+  animation: introFadeUp 1s ease 0.25s both;
+}
+
+.intro-title {
+  margin: 12px 0 10px;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(3.8rem, 10vw, 6.8rem);
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  animation: introFadeUp 1s ease 0.4s both;
+}
+
+.intro-season {
+  font-size: 1.15rem;
+  animation: introFadeUp 1s ease 0.55s both;
+}
+
+@keyframes introPulse {
+  0%,
+  100% {
+    transform: scale(0.92);
+    opacity: 0.7;
+  }
+  50% {
+    transform: scale(1.08);
+    opacity: 1;
+  }
+}
+
+@keyframes introRise {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introSpinIn {
+  from {
+    opacity: 0;
+    transform: scale(0.78) rotate(-10deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes introFadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes introSweep {
+  0% {
+    transform: translateX(0);
+    opacity: 0;
+  }
+  25% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateX(180%);
+    opacity: 0;
+  }
+}
+
+@keyframes introRing {
+  0%,
+  100% {
+    transform: scale(0.94);
+    opacity: 0.55;
+  }
+  50% {
+    transform: scale(1.03);
+    opacity: 0.95;
+  }
+}
+
 a {
   color: inherit;
   text-decoration: none;
@@ -747,6 +948,11 @@ button {
   .site-shell {
     width: min(100% - 20px, 1220px);
     padding-top: 12px;
+  }
+
+  .intro-logo {
+    width: 120px;
+    height: 120px;
   }
 
   .topbar,

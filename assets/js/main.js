@@ -4,6 +4,20 @@
 
   const page = document.body.dataset.page;
 
+  function runIntro() {
+    if (page !== "home") return;
+
+    const intro = document.getElementById("intro-screen");
+    if (!intro) return;
+
+    document.body.classList.add("intro-active");
+
+    window.setTimeout(() => {
+      intro.classList.add("is-hidden");
+      document.body.classList.remove("intro-active");
+    }, 1900);
+  }
+
   function createPlaceholder(note) {
     const wrapper = document.createElement("div");
     wrapper.className = "placeholder-content";
@@ -99,6 +113,8 @@
   function titleCaseRole(role) {
     return role.replace(/\b\w/g, (letter) => letter.toUpperCase());
   }
+
+  runIntro();
 
   if (page === "home") {
     document.getElementById("league-name").textContent = data.league.shortName;
