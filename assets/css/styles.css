@@ -664,6 +664,21 @@ button {
   transition: transform 220ms ease;
 }
 
+.poster-name {
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 10px;
+  z-index: 3;
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.05;
+  letter-spacing: 0.08em;
+  color: var(--text);
+  text-transform: uppercase;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.7);
+}
+
 .poster-tile:hover {
   z-index: 4;
   border-color: rgba(241, 182, 27, 0.36);

@@ -42,6 +42,13 @@
     container.appendChild(createPlaceholder(fallbackNote));
   }
 
+  function appendPosterName(container, name) {
+    const label = document.createElement("div");
+    label.className = "poster-name";
+    label.textContent = name;
+    container.appendChild(label);
+  }
+
   function renderImageCarousel(container, item, fallbackNote) {
     const images = Array.isArray(item.images) ? item.images.filter(Boolean) : [];
 
@@ -136,6 +143,7 @@
       tile.className = "poster-tile";
       tile.style.background = `linear-gradient(180deg, rgba(255,255,255,0.04), transparent), radial-gradient(circle at 20% 20%, ${player.accent}44, transparent 36%), linear-gradient(180deg, rgba(23,74,146,0.76), rgba(8,15,28,0.98))`;
       renderImage(tile, { ...player, image: player.posterImage || player.image }, player.shortName);
+      appendPosterName(tile, player.shortName);
       posterGrid.appendChild(tile);
     });
 
