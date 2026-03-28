@@ -121,6 +121,20 @@
     return role.replace(/\b\w/g, (letter) => letter.toUpperCase());
   }
 
+  function getPerformance(player) {
+    return (
+      player.performance2026 || {
+        matches: "0",
+        runs: "0",
+        wickets: "0",
+        catches: "0",
+        strikeRate: "-",
+        economy: "-",
+        status: "Awaiting IPL 2026 appearance",
+      }
+    );
+  }
+
   runIntro();
 
   if (page === "home") {
@@ -264,5 +278,59 @@
     });
 
     applyFilter("all");
+  }
+
+  if (page === "performance") {
+    const grid = document.getElementById("performance-grid");
+    const chips = Array.from(document.querySelectorAll(".filter-chip"));
+
+    data.players.forEach((player) => {
+      const perf = getPerformance(player);
+      const card = document.createElement("article");
+      card.className = "performance-card";
+      card.dataset.filters = player.filter.join(" ");
+
+      const top = document.createElement("div");
+      top.className = "performance-card-top";
+      top.innerHTML = `<h3>${player.name}</h3><span class="pill">${player.role}</span>`;
+
+      const status = document.createElement("p");
+      status.className = "performance-status";
+      status.textContent = perf.status;
+
+      const stats = document.createElement("div");
+      stats.className = "performance-stats";
+      [
+        ["Matches", perf.matches],
+        ["Runs", perf.runs],
+        ["Wickets", perf.wickets],
+        ["Catches", perf.catches],
+        ["Strike Rate", perf.strikeRate],
+        ["Economy", perf.economy],
+      ].forEach(([label, value]) => {
+        stats.appendChild(metricCard(label, value));
+      });
+
+      card.append(top, stats);
+      grid.appendChild(card);
+    });
+
+    function applyPerformanceFilter(filter) {
+      Array.from(grid.children).forEach((card) => {
+        const filters = card.dataset.filters.split(" ");
+        const show = filter === "all" || filters.includes(filter);
+        card.classList.toggle("is-hidden", !show);
+      });
+    }
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        chips.forEach((button) => button.classList.remove("is-active"));
+        chip.classList.add("is-active");
+        applyPerformanceFilter(chip.dataset.filter);
+      });
+    });
+
+    applyPerformanceFilter("all");
   }
 })();

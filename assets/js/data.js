@@ -16,6 +16,9 @@ window.teamSiteData = {
       "Built from real-life IPL and T20 stars",
     ],
   },
+  performanceMeta: {
+    asOf: "As of March 28, 2026, IPL 2026 is on opening-day footing for this tracker. Update these numbers as the season progresses.",
+  },
   owner: {
     name: "Abid Dileep",
     bio:

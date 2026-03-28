@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Mumbai Indians SFL Squad</title>
+    <title>Mumbai Indians SFL Performance</title>
     <meta
       name="description"
-      content="Detailed player profiles for the Mumbai Indians fantasy squad in the SFL-SNT Thomas Fantasy League."
+      content="IPL 2026 current performance tracker for the Mumbai Indians fantasy squad."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -16,7 +16,7 @@
     />
     <link rel="stylesheet" href="assets/css/styles.css" />
   </head>
-  <body data-page="players">
+  <body data-page="performance">
     <div class="site-shell">
       <header class="topbar">
         <a class="brand" href="index.html" aria-label="Mumbai Indians SFL home">
@@ -34,8 +34,8 @@
         </div>
         <nav class="main-nav" aria-label="Primary">
           <a class="nav-link" href="index.html">Home</a>
-          <a class="nav-link is-active" href="players.html">Squad</a>
-          <a class="nav-link" href="performance.html">Performance</a>
+          <a class="nav-link" href="players.html">Squad</a>
+          <a class="nav-link is-active" href="performance.html">Performance</a>
         </nav>
       </header>
 
@@ -45,13 +45,13 @@
             <div class="hero-logo-wrap">
               <img class="hero-logo" src="assets/images/team-logo.png" alt="Mumbai Indians team logo" />
             </div>
-            <p class="eyebrow">SFL Cricket League 2026</p>
-            <h1>Our <span>Squad</span></h1>
+            <p class="eyebrow">IPL 2026 Tracker</p>
+            <h1>Current <span>Performance</span></h1>
           </div>
         </section>
 
         <section class="filter-bar">
-          <div class="filter-group" role="tablist" aria-label="Filter players by role">
+          <div class="filter-group" role="tablist" aria-label="Filter performance by role">
             <button class="filter-chip is-active" data-filter="all" type="button">All</button>
             <button class="filter-chip" data-filter="batsman" type="button">Batsman</button>
             <button class="filter-chip" data-filter="bowler" type="button">Bowler</button>
@@ -60,7 +60,7 @@
           </div>
         </section>
 
-        <section class="player-sections" id="player-sections"></section>
+        <section class="performance-grid" id="performance-grid"></section>
       </main>
     </div>
 
